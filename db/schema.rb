@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_113248) do
+ActiveRecord::Schema.define(version: 2020_04_02_102252) do
+
+  create_table "book_coments", force: :cascade do |t|
+    t.text "body"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["book_id"], name: "index_book_coments_on_book_id"
+  end
+
+  create_table "book_comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["book_id"], name: "index_book_comments_on_book_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -18,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_04_01_113248) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_comments_on_book_id"
   end
 
   create_table "users", force: :cascade do |t|
