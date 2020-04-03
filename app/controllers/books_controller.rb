@@ -3,7 +3,6 @@ class BooksController < ApplicationController
 
   def show
 		@book = Book.find(params[:id])
-
 		@user = @book.user
 		# binding.pry
   end
@@ -11,7 +10,7 @@ class BooksController < ApplicationController
   def index
 		@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
 		@book = Book.new
-  end
+	end
 
 	def create
 		@book = Book.new(book_params) #Bookモデルのテーブルを使用しているのでbookコントローラで保存する。

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :users,only: [:show,:index,:edit,:update]
   resources :books do
     resources :book_comments, only: [:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    # ↑resourceが複数形になっていてidを上手く渡せないroute matchエラーが起きていた
   end
 
   root 'home#top'
